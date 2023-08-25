@@ -11,7 +11,6 @@ public class NoiseGeneratorFarlandsOctaves extends NoiseGenerator
     /** Collection of noise generation functions.  Output is combined to produce different octaves of noise. */
     private NoiseGeneratorImproved[] generatorCollection;
     private int octaves;
-    private static final String __OBFID = "CL_00000535";
 
     public NoiseGeneratorFarlandsOctaves(Random p_i2111_1_, int p_i2111_2_)
     {

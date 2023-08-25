@@ -61,7 +61,6 @@ public class ChunkProviderFarNether extends ChunkProviderHell implements IChunkP
     double[] noiseData3;
     double[] noiseData4;
     double[] noiseData5;
-    private static final String __OBFID = "CL_00000392";
 
     {
         genNetherBridge = (MapGenNetherBridge) TerrainGen.getModdedMapGen(genNetherBridge, NETHER_BRIDGE);

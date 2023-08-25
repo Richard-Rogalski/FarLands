@@ -41,7 +41,6 @@ public class ChunkProviderFarEnd extends ChunkProviderEnd implements IChunkProvi
     double[] noiseData4;
     double[] noiseData5;
     int[][] field_73203_h = new int[32][32];
-    private static final String __OBFID = "CL_00000397";
 
     public ChunkProviderFarEnd(World p_i2007_1_, long p_i2007_2_)
     {
