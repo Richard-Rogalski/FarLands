@@ -44,8 +44,8 @@ public class FarLands
  
     /*Mod ID and Version declarations*/
     public static final String MODID = "farlands";
-    public static final String VERSION = "1.0.1";
-    public static final String NAME = "FarLands";
+    public static final String VERSION = "2.0.0";
+    public static final String NAME = "farlands";
     
     public static WorldType farlands; 
     
@@ -53,13 +53,8 @@ public class FarLands
     
     public static int threshold;
     
-    static FarVersionChecker versionChecker = new  FarVersionChecker();
-    
     public static Configuration config;
     
-    public static int versionID = 2;
-    
-
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
@@ -73,14 +68,14 @@ public class FarLands
     @EventHandler
     public void load(FMLInitializationEvent event)
     {
-    	ClientCommandHandler.instance.registerCommand(new VersionCommand());
+    	//ClientCommandHandler.instance.registerCommand(new VersionCommand());
     	
     	farlands = new FarWorldType("FarLands");
         
         this.instance = this;
         
-        FMLCommonHandler.instance().bus().register(versionChecker);
-        MinecraftForge.EVENT_BUS.register(versionChecker);
+        //FMLCommonHandler.instance().bus().register(versionChecker);
+        //MinecraftForge.EVENT_BUS.register(versionChecker);
         
         FMLCommonHandler.instance().bus().register(this);
         MinecraftForge.EVENT_BUS.register(this);
@@ -91,24 +86,25 @@ public class FarLands
     @SubscribeEvent
     public void onGen(ChunkProviderEvent.InitNoiseField event)
     {
-    	
-        if (event.chunkProvider instanceof ChunkProviderEnd && Minecraft.getMinecraft().theWorld.provider.terrainType instanceof FarWorldType)
+    	//uses static 1 and -1 for dimensions, won't support multiworlds / multiverse, should fix
+        if(event.chunkProvider instanceof ChunkProviderEnd)// && Minecraft.getMinecraft().theWorld.provider.terrainType instanceof FarWorldType)
         {
             ChunkProviderFarEnd end = (ChunkProviderFarEnd)(new ChunkProviderFarEnd(DimensionManager.getWorld(1), DimensionManager.getWorld(1).getSeed()));
             event.setResult(Result.DENY);
 
             event.noisefield = end.initializeNoiseField(null, event.posX, event.posY, event.posZ, event.sizeX, event.sizeY, event.sizeZ);
-    
         }
-        else if (event.chunkProvider instanceof ChunkProviderHell && Minecraft.getMinecraft().theWorld.provider.terrainType instanceof FarWorldType)
+        else if(event.chunkProvider instanceof ChunkProviderHell)// && Minecraft.getMinecraft().theWorld.provider.terrainType instanceof FarWorldType)
         {
-        	
             ChunkProviderFarNether nether = (ChunkProviderFarNether)(new ChunkProviderFarNether(DimensionManager.getWorld(-1), DimensionManager.getWorld(-1).getSeed()));
             event.setResult(Result.DENY);
 
             event.noisefield = nether.initializeNoiseField(null, event.posX, event.posY, event.posZ, event.sizeX, event.sizeY, event.sizeZ);
-    
         }  
+		// should probably just check if it's dimension 0 for now
+		else if(event.chunkProvider instanceof ChunkProviderGenerate){
+            //event.noisefield = ((ChunkProviderGenerate)DimensionManager.getProvider(0).createChunkGenerator()).initializeNoiseField(null, event.posX, event.posY, event.posZ, event.sizeX, event.sizeY, event.sizeZ);
+		}
     }
 }
 
