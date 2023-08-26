@@ -5,10 +5,8 @@ package com.kpabr.FarLands;
  * currently using Minecraft Forge 10.13.4.1448
  */
 public class CommonProxy {
-
         // Client stuff
         public void registerRenderers() {
-           
                 // Nothing here as the server doesn't render graphics or entities!
         }
 }

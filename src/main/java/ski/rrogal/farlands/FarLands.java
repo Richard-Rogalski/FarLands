@@ -47,8 +47,6 @@ public class FarLands
     public static final String VERSION = "2.0.0";
     public static final String NAME = "farlands";
     
-    public static WorldType farlands; 
-    
     public static FarLands instance;
     
     public static int threshold;
@@ -63,19 +61,11 @@ public class FarLands
     	FarLands.config.load();
         this.threshold = FarLands.config.getInt("FarLandsStart", Configuration.CATEGORY_GENERAL, -1, -1, 12550820, "Approximate Far Lands start distance (set to -1 for default distance)");
         FarLands.config.save();
-        
     }
     @EventHandler
     public void load(FMLInitializationEvent event)
     {
-    	//ClientCommandHandler.instance.registerCommand(new VersionCommand());
-    	
-    	farlands = new FarWorldType("FarLands");
-        
         this.instance = this;
-        
-        //FMLCommonHandler.instance().bus().register(versionChecker);
-        //MinecraftForge.EVENT_BUS.register(versionChecker);
         
         FMLCommonHandler.instance().bus().register(this);
         MinecraftForge.EVENT_BUS.register(this);
@@ -89,22 +79,22 @@ public class FarLands
     	//uses static 1 and -1 for dimensions, won't support multiworlds / multiverse, should fix
         if(event.chunkProvider instanceof ChunkProviderEnd)// && Minecraft.getMinecraft().theWorld.provider.terrainType instanceof FarWorldType)
         {
-            ChunkProviderFarEnd end = (ChunkProviderFarEnd)(new ChunkProviderFarEnd(DimensionManager.getWorld(1), DimensionManager.getWorld(1).getSeed()));
-            event.setResult(Result.DENY);
+            //ChunkProviderFarEnd end = (ChunkProviderFarEnd)(new ChunkProviderFarEnd(DimensionManager.getWorld(1), DimensionManager.getWorld(1).getSeed()));
+            //event.setResult(Result.DENY);
 
-            event.noisefield = end.initializeNoiseField(null, event.posX, event.posY, event.posZ, event.sizeX, event.sizeY, event.sizeZ);
+            //event.noisefield = end.initializeNoiseField(null, event.posX, event.posY, event.posZ, event.sizeX, event.sizeY, event.sizeZ);
         }
         else if(event.chunkProvider instanceof ChunkProviderHell)// && Minecraft.getMinecraft().theWorld.provider.terrainType instanceof FarWorldType)
         {
-            ChunkProviderFarNether nether = (ChunkProviderFarNether)(new ChunkProviderFarNether(DimensionManager.getWorld(-1), DimensionManager.getWorld(-1).getSeed()));
-            event.setResult(Result.DENY);
+            //ChunkProviderFarNether nether = (ChunkProviderFarNether)(new ChunkProviderFarNether(DimensionManager.getWorld(-1), DimensionManager.getWorld(-1).getSeed()));
+            //event.setResult(Result.DENY);
 
-            event.noisefield = nether.initializeNoiseField(null, event.posX, event.posY, event.posZ, event.sizeX, event.sizeY, event.sizeZ);
+            //event.noisefield = nether.initializeNoiseField(null, event.posX, event.posY, event.posZ, event.sizeX, event.sizeY, event.sizeZ);
         }  
 		// should probably just check if it's dimension 0 for now
-		else if(event.chunkProvider instanceof ChunkProviderGenerate){
+		//else if(event.chunkProvider instanceof ChunkProviderGenerate){
             //event.noisefield = ((ChunkProviderGenerate)DimensionManager.getProvider(0).createChunkGenerator()).initializeNoiseField(null, event.posX, event.posY, event.posZ, event.sizeX, event.sizeY, event.sizeZ);
-		}
+		//}
     }
 }
 
