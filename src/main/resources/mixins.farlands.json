@@ -5,10 +5,7 @@
   "refmap": "mixins.farlands.refmap.json",
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-    "mixins.MixinChunkProviderGenerate",
-    "mixins.MixinNoiseGeneratorOctaves"
-  ],
+  "mixins": [],
   "client": [],
   "server": []
 }
