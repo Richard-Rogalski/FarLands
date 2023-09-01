@@ -175,21 +175,23 @@ private int modifyArgument3(int p_147423_3_) {
 }
 */
 
-@ModifyArgs(method = "func_147424_a", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/gen/ChunkProviderGenerate;func_147423_a(III)V"))
-    private void thisShouldWork(Args args) {
-        if(1 > 0){
-            int i = (int)args.get(0);
-            if(Math.abs(args.get(0)) > FarLands.threshold/4){
+	@ModifyArgs(method = "func_147424_a", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/gen/ChunkProviderGenerate;func_147423_a(III)V"))
+	private void thisShouldWork(Args args) {
+	    System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ" + FarLands.thresholdNether + "   " + args.get(0) + "  " + args.get(1));
+
+	    if(FarLands.threshold > 0){
+	    	int i = (int)args.get(0);
+	        if(Math.abs(args.get(0)) > FarLands.threshold/4){
 				i = (int)(i + (Math.copySign(((12550820 - FarLands.threshold)/4), i)));
-                args.set(0, i);
-            }
-            i = (int)args.get(2);
-            if(Math.abs(args.get(2)) > FarLands.threshold/4){
+	            args.set(0, i);
+	        }
+	        i = (int)args.get(2);
+	        if(Math.abs(args.get(2)) > FarLands.threshold/4){
 				i = (int)(i + (Math.copySign(((12550820 - FarLands.threshold)/4), i)));
-                args.set(2, i);
-            }
-        }
-    }
+	            args.set(2, i);
+	        }
+	    }
+	}
 
 /*
     //@Shadow private Random rand;

@@ -50,6 +50,9 @@ public class FarLands
     public static FarLands instance;
     
     public static int threshold;
+    public static int thresholdNether;
+    public static int thresholdEnd;
+	public static String directions;
     
     public static Configuration config;
     
@@ -59,7 +62,10 @@ public class FarLands
     	config = new Configuration(event.getSuggestedConfigurationFile()); //gets default config file
     	
     	FarLands.config.load();
-        this.threshold = FarLands.config.getInt("FarLandsStart", Configuration.CATEGORY_GENERAL, -1, -1, 12550820, "Approximate Far Lands start distance (set to -1 for default distance)");
+        this.threshold = FarLands.config.getInt("FarLandsStart", Configuration.CATEGORY_GENERAL, -1, -1, 12550820, "Approximate Far Lands start distance. Might not change the start distance for some generators added by mods. (set to -1 for default distance)");
+        this.thresholdNether = FarLands.config.getInt("FarLandsStartNether", Configuration.CATEGORY_GENERAL, -1, -1, 12550820, "Approximate Far Lands start distance in the nether. If you want the farlands in the nether to line up with farlands in the overworld, set this to an eighth of the value. (set to -1 for default distance)");
+        this.thresholdEnd = FarLands.config.getInt("FarLandsStartEnd", Configuration.CATEGORY_GENERAL, -1, -1, 12550820, "Approximate Far Lands start distance in the end. (set to -1 for default distance)");
+        this.directions = FarLands.config.getString("generateInDirection", Configuration.CATEGORY_GENERAL, "NEWS", "Directions that farlands will generate. Examples: \"NEWS\" for all directions. \"NW\" to spawn them north and to the west. \"E\" to spawn them to the east.");
         FarLands.config.save();
     }
     @EventHandler
