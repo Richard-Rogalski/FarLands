@@ -8,7 +8,7 @@ package com.kpabr.FarLands;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-//import com.kpabr.FarLands.CommonProxy;
+import com.kpabr.FarLands.CommonProxy;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -28,7 +28,7 @@ import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
-//import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -39,10 +39,10 @@ import cpw.mods.fml.relauncher.Side;
 @Mod(modid = FarLands.MODID, version = FarLands.VERSION, name = FarLands.NAME)
 public class FarLands
 {
-	/*
+	
     @SidedProxy(clientSide="com.kpabr.FarLands.client.ClientProxy", serverSide="com.kpabr.FarLands.CommonProxy")
     public static CommonProxy proxy;
-	*/
+	
  
     /*Mod ID and Version declarations*/
     public static final String MODID = "farlands";
