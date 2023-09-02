@@ -38,7 +38,7 @@ public class MixinChunkProviderEnd {
 */
 	@ModifyArgs(method = "provideChunk", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/gen/ChunkProviderEnd;func_147420_a(II[Lnet/minecraft/block/Block;[Lnet/minecraft/world/biome/BiomeGenBase;)V"))
     private void thisShouldWork2(Args args) {
-	System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ" + FarLands.thresholdEnd + "   " + args.get(0) + "  " + args.get(1));
+	//System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ" + FarLands.thresholdEnd + "   " + args.get(0) + "  " + args.get(1));
         if(FarLands.thresholdEnd > 0){
             int i = (int)args.get(0);
             if(Math.abs(args.get(0)) > FarLands.thresholdEnd/16){

@@ -38,7 +38,7 @@ public class MixinChunkProviderHell {
 */
 	@ModifyArgs(method = "provideChunk", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/gen/ChunkProviderHell;func_147419_a(II[Lnet/minecraft/block/Block;)V"))
     private void thisShouldWork2(Args args) {
-	System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ" + FarLands.thresholdNether + "   " + args.get(0) + "  " + args.get(1));
+	//System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ" + FarLands.thresholdNether + "   " + args.get(0) + "  " + args.get(1));
         if(FarLands.thresholdNether > 0){
             int i = (int)args.get(0);
             if(Math.abs(args.get(0)) > FarLands.thresholdNether/16){

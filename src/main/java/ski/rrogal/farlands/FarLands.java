@@ -8,7 +8,7 @@ package com.kpabr.FarLands;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-import com.kpabr.FarLands.CommonProxy;
+//import com.kpabr.FarLands.CommonProxy;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -28,7 +28,7 @@ import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.SidedProxy;
+//import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -39,8 +39,10 @@ import cpw.mods.fml.relauncher.Side;
 @Mod(modid = FarLands.MODID, version = FarLands.VERSION, name = FarLands.NAME)
 public class FarLands
 {
+	/*
     @SidedProxy(clientSide="com.kpabr.FarLands.client.ClientProxy", serverSide="com.kpabr.FarLands.CommonProxy")
     public static CommonProxy proxy;
+	*/
  
     /*Mod ID and Version declarations*/
     public static final String MODID = "farlands";
@@ -52,7 +54,12 @@ public class FarLands
     public static int threshold;
     public static int thresholdNether;
     public static int thresholdEnd;
+
 	public static String directions;
+	public static boolean genNorth;
+	public static boolean genEast;
+	public static boolean genWest;
+	public static boolean genSouth;
     
     public static Configuration config;
     
@@ -66,19 +73,33 @@ public class FarLands
         this.thresholdNether = FarLands.config.getInt("FarLandsStartNether", Configuration.CATEGORY_GENERAL, -1, -1, 12550820, "Approximate Far Lands start distance in the nether. If you want the farlands in the nether to line up with farlands in the overworld, set this to an eighth of the value. (set to -1 for default distance)");
         this.thresholdEnd = FarLands.config.getInt("FarLandsStartEnd", Configuration.CATEGORY_GENERAL, -1, -1, 12550820, "Approximate Far Lands start distance in the end. (set to -1 for default distance)");
         this.directions = FarLands.config.getString("generateInDirection", Configuration.CATEGORY_GENERAL, "NEWS", "Directions that farlands will generate. Examples: \"NEWS\" for all directions. \"NW\" to spawn them north and to the west. \"E\" to spawn them to the east.");
-        FarLands.config.save();
+        FarLands.config.save(); //TODO: make farlands able to start after the default
+
+		this.genNorth = false; this.genEast = false; this.genWest = false; this.genSouth = false;
+		
+		if(this.directions.contains("N"))
+			this.genNorth = true;
+		if(this.directions.contains("E"))
+            this.genEast = true;
+		if(this.directions.contains("W"))
+            this.genWest = true;
+		if(this.directions.contains("S"))
+            this.genSouth = true;
     }
+
     @EventHandler
     public void load(FMLInitializationEvent event)
     {
         this.instance = this;
         
         FMLCommonHandler.instance().bus().register(this);
-        MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.TERRAIN_GEN_BUS.register(this);
+        //MinecraftForge.EVENT_BUS.register(this);
+        //MinecraftForge.TERRAIN_GEN_BUS.register(this);
         
-     	proxy.registerRenderers();
+     	//proxy.registerRenderers();
     }
+
+	/*
     @SubscribeEvent
     public void onGen(ChunkProviderEvent.InitNoiseField event)
     {
@@ -102,5 +123,6 @@ public class FarLands
             //event.noisefield = ((ChunkProviderGenerate)DimensionManager.getProvider(0).createChunkGenerator()).initializeNoiseField(null, event.posX, event.posY, event.posZ, event.sizeX, event.sizeY, event.sizeZ);
 		//}
     }
+	*/
 }
 

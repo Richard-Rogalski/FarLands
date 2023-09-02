@@ -177,7 +177,7 @@ private int modifyArgument3(int p_147423_3_) {
 
 	@ModifyArgs(method = "func_147424_a", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/gen/ChunkProviderGenerate;func_147423_a(III)V"))
 	private void thisShouldWork(Args args) {
-	    System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ" + FarLands.thresholdNether + "   " + args.get(0) + "  " + args.get(1));
+	    //System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ" + FarLands.thresholdNether + "   " + args.get(0) + "  " + args.get(1));
 
 	    if(FarLands.threshold > 0){
 	    	int i = (int)args.get(0);
